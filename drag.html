@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Resizable - Animate</title>
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f0f0f0;
+            /* خلفية الصفحة */
+        }
+
+        .resizable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+            background-color: brown;
+            /* لون خلفية العناصر القابلة للتحجيم */
+            border: 1px solid #ccc;
+            /* حدود للعناصر القابلة للتحجيم */
+            margin-bottom: 10px;
+            /* هامش أسفل العناصر القابلة للتحجيم */
+        }
+
+        .resizable h3 {
+            text-align: center;
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        /* إخفاء العناصر بشكل مبدئي */
+        #hidden {
+            /* تخفي العنصر بدلاً من تعيين عرض وارتفاع 100% */
+            background-color: rgb(51, 255, 0);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hidden"></div>
+    <div id="sortable">
+        <div id="box" style="width: 500px; height: 200px; background-color: blue;"></div>
+        <div id="div1" class="ui-widget-content resizable">
+            <h3>div 1</h3>
+        </div>
+        <div id="div2" class="ui-widget-content resizable">
+            <h3>div 2</h3>
+        </div>
+        <div id="div3" class="ui-widget-content resizable">
+            <h3>div 3</h3>
+        </div>
+        <div id="div4" class="ui-widget-content resizable">
+            <h3>div 4</h3>
+        </div>
+    </div>
+
+    <script src="js.js"></script>
+    <!-- <script src="jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery-cstume.js"></script> -->
+    <script>
+        if (localStorage.getItem('sortedDivIds')) {
+            console.log(' if (localStorage.getItem(');
+            restoreOrder();
+        }
+    </script>
+</body>
+
+</html>

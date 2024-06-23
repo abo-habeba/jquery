@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Resizable - Animate</title>
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f0f0f0;
+            /* خلفية الصفحة */
+        }
+
+        .resizable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+            background-color: brown;
+            /* لون خلفية العناصر القابلة للتحجيم */
+            border: 1px solid #ccc;
+            /* حدود للعناصر القابلة للتحجيم */
+            margin-bottom: 10px;
+            /* هامش أسفل العناصر القابلة للتحجيم */
+        }
+
+        .resizable h3 {
+            text-align: center;
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        /* إخفاء العناصر بشكل مبدئي */
+        #hidden {
+
+            /* تخفي العنصر بدلاً من تعيين عرض وارتفاع 100% */
+            background-color: rgb(51, 255, 0);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sortable">
+            <div id="hesham" class="ui-widget-content resizable">
+            <h3>هشام</h3>
+            <h3>هشام</h3>
+            <h3>هشام</h3>
+            <h3>هشام</h3>
+        </div>
+
+        <div id="mahmued" class="ui-widget-content resizable">
+            <h3>محمود</h3>
+            <h3>محمود</h3>
+            <h3>محمود</h3>
+            <h3>محمود</h3>
+            <h3>محمود</h3>
+        </div>
+        <div id="wael" class="ui-widget-content resizable">
+            <h3>وائل</h3>       
+            <h3>وائل</h3>       
+            <h3>وائل</h3>       
+            <h3>وائل</h3>       
+        </div>
+        <div id="aby" class="ui-widget-content resizable">
+            <h3>ابي</h3>
+            <h3>ابي</h3>
+            <h3>ابي</h3>
+            <h3>ابي</h3>            
+        </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        // JavaScript
+        // دالة لحفظ ترتيب العناصر
+        function saveOrder() {
+            var container = document.getElementById("sortable");
+            var divIds = Array.from(container.getElementsByTagName("div")).map(function (div) {
+                return div.id;
+            });
+            localStorage.setItem("sortedDivIds", JSON.stringify(divIds));
+            
+        }
+
+        // دالة لاسترجاع الترتيب المحفوظ
+        function restoreOrder() {
+            var container = document.getElementById("sortable");
+            var sortedDivIds = JSON.parse(localStorage.getItem("sortedDivIds"));
+            if (sortedDivIds) {
+                sortedDivIds.forEach(function (id) {
+                    var div = document.getElementById(id);
+                    container.appendChild(div);
+                });
+            }
+        }
+        localStorage.getItem("sortedDivIds")? restoreOrder():saveOrder();
+    </script>
+</body>
+
+</html>
